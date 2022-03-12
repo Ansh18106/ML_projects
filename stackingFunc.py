@@ -35,13 +35,20 @@ def stackFrames (imgArr,factor):
         ver = hor
     return ver
 
-img = cv2.imread("resources/sample_sky.jpg")
-imgBlank = np.zeros_like(img)
-img = cv2.resize(img,(width,height))
-imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-imgBlur=cv2.GaussianBlur (imgGray,(7,7),1)
-imgCanny = cv2.Canny (imgBlur,50,50)
-imgStack=stackFrames([[img,imgHSV,imgCanny],[img,imgBlank,imgBlur]],red_factor)
-cv2.imshow("stacked",imgStack)
-cv2.waitKey(0)
+def stackImgs (imgMat):
+    imgStack = stackFrames(imgMat,1)
+    cv2.imshow("stacked",imgStack)
+    cv2.waitKey(0)
+
+
+
+# img = cv2.imread("InQuestion/Q1_cropped.jpg")
+# imgBlank = np.zeros_like(img)
+# img = cv2.resize(img,(width,height))
+# imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+# imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+# imgBlur=cv2.GaussianBlur (imgGray,(7,7),1)
+# imgCanny = cv2.Canny (imgBlur,50,50)
+# imgStack=stackFrames([img,imgHSV,imgCanny],red_factor)
+# cv2.imshow("stacked",imgStack)
+# cv2.waitKey(0)
