@@ -48,7 +48,7 @@ def imgToData(img):
                 f.write(val+" ")
                 x1,y1,x2,y2=int(ele_info[6]),int(ele_info[7]),int(ele_info[8]),int(ele_info[9])
                 cv2.rectangle (imgBlank,(x1,y1),(x1+x2,y2+y1),(52,125,14),2)
-                print (imgBlank.shape)
+                # print (imgBlank.shape)
                 cv2.putText(imgBlank,val,(x1,y1) ,cv2.FONT_HERSHEY_COMPLEX,1,(150,208,46),1)
     f.close()
 
@@ -64,10 +64,12 @@ def clickDigit(img):
 
 
 img = cv2.imread(path.format(1))
-# img = cv2.imread("InQuestion/Screenshot_2021-11-22-22-11-15-90.jpg")
+print (width, height)
+img = cv2.imread("InQuestion/Screenshot_2021-11-22-10-35-35-50.jpg")
+# print (img)
 img = cv2.resize(img,(width,height))
 imgBlank=np.zeros_like(img)
-# print (pytesseract.image_to_string(img))
+print (pytesseract.image_to_string(img))
 
 # imgToBoxes(img)
 imgToData(img)
